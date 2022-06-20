@@ -26,8 +26,9 @@ function viewSinglePost(id) {
      .then(data => {
       console.log(data)
       localStorage.setItem('viewedPost', JSON.stringify(data))
+      window.location.href = `single-post.html`
      })
-        window.location.href = `single-post.html`
+       
     }
 
 // create posts function similar to a Create operation, the C in CRUD
@@ -83,11 +84,11 @@ function createPost(e) {
     let postToUpdate = `
       <form action="" id="update-form">
        <div class="mb-3">
-        <label for="post-title" class="form-label">Update Post</label>
+        <label for="post-title" class="form-label fs-3">Update Post</label>
         <input type="text" class="form-control" id="updatePost-title" placeholder="Post Title" value='${singlePost.title}'>
        </div>
        <div class="mb-3">
-        <label for="description" class="form-label">Description</label>
+        <label for="description" class="form-label fs-3">Description</label>
         <textarea class="form-control" id="update-description" rows="3" value=''>${singlePost.body}</textarea>
        </div>
         <button type="submit" class="btn btn-lg btn-success" onclick="">UPDATE</button>
@@ -160,11 +161,11 @@ function renderPosts(arr) {
               ${post.body}
             </p>
         </div>
-        <div class="d-flex">
-           <button class="btn btn-primary col-3" onclick="viewSinglePost(${post.id})">VIEW</button>
-           <button class="btn btn-success col-3 mx-auto" onclick="updateSinglePost(${post.id})">UPDATE</button>
-           <button class="btn btn-danger col-3" onclick="deleteSinglePost(${post.id})">DELETE</button>
-        </div>
+        <div class=" d-flex justify-content-between">
+          <button class="btn btn-primary" onclick="viewSinglePost(${post.id})">VIEW</button>
+          <button class="btn btn-success " onclick="updateSinglePost(${post.id})">UPDATE</button>
+          <button class="btn btn-danger " onclick="deleteSinglePost(${post.id})">DELETE</button>
+       </div>
      </div>
    </div>
     `
